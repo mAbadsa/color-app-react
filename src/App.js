@@ -8,11 +8,7 @@ class App extends React.Component {
     console.log(generatePalette(seedColors[2]));
     return (
       <div className="App">
-        <Palette palette={generatePalette(seedColors[0])} />
-        <Palette palette={generatePalette(seedColors[1])} />
-        <Palette palette={generatePalette(seedColors[2])} />
         <Palette palette={generatePalette(seedColors[3])} />
-        <Palette palette={generatePalette(seedColors[4])} />
       </div>
     );
   }

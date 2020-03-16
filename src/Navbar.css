@@ -32,7 +32,7 @@
 
 .Navbar .slider-container {
     height: 100%;
-    width: 100%;
+    width: 70%;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -79,4 +79,41 @@
     border-radius: 5px;
     border: none;
     box-shadow: inset 0px 3px 6px 2px rgb(165, 164, 164), inset 0 1px 5px 3px rgb(105, 100, 101);
+}
+
+.Navbar .select-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100%;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-image: repeating-linear-gradient(
+        -45deg,
+        #14bd08c0,
+        #14bd08c0 5px,
+        #27fa02c0 5px,
+        #27fa02c0 10px      
+    );
+    box-shadow: 0 -1px 15px 0px #000000;
+}
+
+.MuiInputBase-root {
+    width: 100%;
+    background-color: #0c8d178f;
+}
+
+.MuiInputBase-input {
+    color: white !important;
+    font-weight: 500 !important;
+}
+
+.MuiSelect-selectMenu {
+    padding-left: 0.8rem !important;
+}
+
+.MuiSelect-icon {
+    color: white !important;
 }

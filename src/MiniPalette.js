@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/styles";
 
 const styles = {
@@ -35,11 +34,6 @@ const styles = {
       marginRight: "0.2rem"
     }
   },
-  link: {
-    fontSize: "0.8rem",
-    textDecoration: "none",
-    color: "black"
-  },
   miniColor: {
     display: "inline-block",
     position: "relative",
@@ -51,7 +45,7 @@ const styles = {
 };
 
 function MiniPalette(props) {
-  const { classes, id, colors, emoji, paletteName } = props;
+  const { classes, colors, emoji, paletteName, handleClick } = props;
   const miniColorBox = colors.map(color => {
     return (
       <div
@@ -62,12 +56,10 @@ function MiniPalette(props) {
     );
   });
   return (
-    <div className={classes.root}>
+    <div className={classes.root} onClick={handleClick}>
       <div className={classes.colors}>{miniColorBox}</div>
       <h5 className={classes.title}>
-        <Link className={classes.link} to={`/palette/${id}`}>
           {paletteName}
-        </Link>
         <span> {emoji}</span>
       </h5>
     </div>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import MiniPalette from "./MiniPalette";
 import "./PaletteList.css";
 
 class PaletteList extends Component {
@@ -12,29 +13,9 @@ class PaletteList extends Component {
         </div>
         <div className="palettes-container">
           {palettes.map(palette => {
-            return (
-              <div className="palette-box">
-                <div className="palette-box-color">
-                  {palette.colors.map(color => {
-                    return (
-                      <span
-                        className="palette-cell-color"
-                        style={{ backgroundColor: color.color }}
-                      ></span>
-                    );
-                  })}
-                </div>
-                <div>
-                  <footer>
-                    <Link to={`/palette/${palette.id}`}>{palette.paletteName}</Link>
-                    <p>{palette.emoji}</p>
-                  </footer>
-                </div>
-              </div>
-            );
+            return <MiniPalette key={palette.id} {...palette}/>;
           })}
         </div>
-        <Link>Go</Link>
       </div>
     );
   }

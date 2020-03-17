@@ -15,7 +15,7 @@ const styles = {
     alignItems: "flex-start",
     flexDirection: "column",
     flexWrap: "wrap",
-    width: "50%"
+    width: "60%"
   },
   nav: {
     display: "flex",

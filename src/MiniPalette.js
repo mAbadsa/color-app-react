@@ -31,9 +31,14 @@ const styles = {
     justifyContent: "space-between",
     color: "black",
     "& span": {
-      fontSize: "1.5rem",
-      marginRight: "0.5rem"
+      fontSize: "1.2rem",
+      marginRight: "0.2rem"
     }
+  },
+  link: {
+    fontSize: "0.8rem",
+    textDecoration: "none",
+    color: "black"
   },
   miniColor: {
     display: "inline-block",
@@ -59,8 +64,11 @@ function MiniPalette(props) {
   return (
     <div className={classes.root}>
       <div className={classes.colors}>{miniColorBox}</div>
-      <h5 className={classes.title} to={`/palette/${id}`}>
-        {paletteName} <span>{emoji}</span>
+      <h5 className={classes.title}>
+        <Link className={classes.link} to={`/palette/${id}`}>
+          {paletteName}
+        </Link>
+        <span> {emoji}</span>
       </h5>
     </div>
   );

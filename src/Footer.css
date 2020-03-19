@@ -1,0 +1,25 @@
+.Palette-footer {
+    display: flex;
+    height: 7vh;
+    padding-right: 1rem;
+    align-items: center;
+    justify-content: flex-end;
+    background-image: repeating-linear-gradient(
+        90deg,
+        #2284f3c0,
+        #2284f3c0 5px,
+        #114f95c0 5px,
+        #114f95c0 10px      
+    );
+    color: rgb(251, 251, 251);
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: inset 0 3px 15px rgb(0, 0, 0);
+    text-shadow: 2px 4px 3px #000;
+}
+
+.Palette-footer span {
+    padding-left: 0.5rem;
+    font-size: 1.5rem;
+    color: yellow;
+}

@@ -8,11 +8,10 @@
 }
 
 .color-shades {
-    margin-bottom: -4px;
     height: 50%;
 }
 
-.copy-button, .back-button {
+.back-button {
     position: absolute;
     display: inline-block;
     top: 50%;
@@ -29,36 +28,17 @@
     text-transform: uppercase;
     color: white;
     cursor: pointer;
-    transition: opacity 0.3s;
-}
-
-.back-button {
-    background-color: rgba(255, 255, 255, 0.3);
     text-decoration: none;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s;
 }
 
-.back-button:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    transition: all 0.5s ease-in-out;
-}
-
-.copy-button {
-    opacity: 0;
-}
-
-.ColorBox.go-back {
+.go-back {
     background-color: #000;
-}
-
-.ColorBox:hover .copy-button {
-    opacity: 1;
-    transition: opacity 0.2s;
 }
 
 .ColorBox:hover .back-button {
     opacity: 1;
-    transition: opacity 0.2s;
+    transition: opacity 0.5s;
 }
 
 .box-content {
@@ -74,20 +54,20 @@
     box-sizing: border-box;
 }
 
-.light-color {
+/* .light-color {
     color: white;
-}
-
+} */
+/* 
 .see-more.dark-color,
 .copy-button.dark-color {
     color: rgb(100, 100, 100);
     background-color: rgba(0, 0, 0, 0.1);
-}
-
+} */
+/* 
 .dark-text {
     color: rgb(100, 100, 100);
-}
-
+} */
+/* 
 .see-more {
     position: absolute;
     width: 60px;
@@ -100,7 +80,7 @@
     text-align: center;
     line-height: 30px;
     text-transform: uppercase;
-}
+} */
 
 .copy-overlay {
     width: 100%;

@@ -33,7 +33,9 @@ class Navbar extends Component {
     return (
       <header className="Navbar">
         <div className="logo">
-          <Link to="/">reactcolorpicker</Link>
+          <Link to="/">{
+            showSlider ? 'reactcolorpicker' : 'Color shades'
+          }</Link>
         </div>
         <div className="slider-container">
           {showSlider && (

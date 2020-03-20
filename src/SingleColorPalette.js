@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import ColorBox from "./ColorBox";
 import Footer from "./Footer";
-import "./ColorBox.js";
-import "./Palette.css";
+// import "./ColorBox.js";
+// import "./Palette.css";
 
 class SingleColorPalette extends Component {
   constructor(props) {
@@ -51,7 +51,7 @@ class SingleColorPalette extends Component {
         <Navbar showSlider={false} handleChange={this.changeFormat} />
         <div className="Palette-color">
           {colorBox}
-          <div className="ColorBox go-back color-shades">
+          <div className="go-back ColorBox">
             <Link className="back-button" to={`/palette/${id}`}>
               Go Back
             </Link>

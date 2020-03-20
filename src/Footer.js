@@ -3,7 +3,6 @@ import "./Footer.css";
 
 function Footer(props) {
   const { paletteName, emoji } = props;
-  console.log(props);
   return (
     <div className="Palette-footer">
       {paletteName}

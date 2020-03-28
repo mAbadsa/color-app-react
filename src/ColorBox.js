@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { withStyles } from "@material-ui/styles";
 import chroma from 'chroma-js';
-import "./ColorBox.css";
+// import "./ColorBox.css";
 
 const styles = {
   ColorBox: {
-    marginBottom: "-4px",
+    marginBottom: "-4.5px",
     width: "20%",
     height: props => (props.colorShades ? "50%" : "25%"),
     position: "relative",
@@ -160,7 +160,6 @@ class ColorBox extends Component {
   render() {
     const { name, background, moreUrl, showLink, classes } = this.props;
     const { copied } = this.state;
-    const isLightColor = chroma(background).luminance() >= 0.65;
     return (
       <CopyToClipboard text={background} onCopy={this.changeCopyState}>
         <div className={classes.ColorBox} style={{ background }}>

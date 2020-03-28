@@ -8,6 +8,7 @@
 .Navbar .logo {
     display: flex;
     align-items: center;
+    justify-content: center;
     background-image: repeating-linear-gradient(
         45deg,
         #f11c3fc0,
@@ -16,12 +17,13 @@
         #ff35eec0 10px      
     );
     padding: 0 13px;
+    width: 20%;
+    height: 100%;
     font-family: 'Roboto', sans-serif;
     font-size: 26px;
     text-decoration: none;
     font-weight: 500;
     text-shadow: 2px 4px 3px #000;
-    height: 100%;
     box-shadow: 0 0 10px 3px #000000;
 }
 

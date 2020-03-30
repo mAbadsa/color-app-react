@@ -70,13 +70,25 @@ const styles = theme => ({
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0
+  },
+  colorBox: {
+    display: "inline-block",
+    width: "100px",
+    height: "100px"
   }
 });
 
 class NewPaletteForm extends Component {
-  state = {
-    open: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      currentColor: 'teal',
+      colors: ['teal', "#45F555"]
+    }
+    this.updateCurrentColor = this.updateCurrentColor.bind(this);
+    this.addNewColors = this.addNewColors.bind(this);
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -85,6 +97,15 @@ class NewPaletteForm extends Component {
   handleDrawerClose = () => {
     this.setState({ open: false });
   };
+
+  updateCurrentColor(newColor) {
+    this.setState({ currentColor: newColor.hex });
+  }
+
+  addNewColors() {
+    this.setState({ colors: [...this.state.colors, this.state.currentColor] });
+
+  }
 
   render() {
     const { classes, theme } = this.props;
@@ -142,10 +163,10 @@ class NewPaletteForm extends Component {
             </Button>
           </div>
           <ChromePicker
-            color={{ r: 255, g: 220, b: 50 }}
-            onChangeComplete={newColor => console.log(newColor)}
+            color={this.state.currentColor}
+            onChangeComplete={this.updateCurrentColor}
           />
-          <Button variant="contained" color="primary">
+          <Button variant="contained" color="primary" style={{backgroundColor: this.state.currentColor}} onClick={this.addNewColors}>
               Add Color
             </Button>
         </Drawer>
@@ -155,6 +176,13 @@ class NewPaletteForm extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
+          <ul>
+            {this.state.colors.map(item => {
+              return (
+                <span className={classes.colorBox} style={{backgroundColor: item}}></span>
+                )
+            })}
+          </ul>
         </main>
       </div>
     );

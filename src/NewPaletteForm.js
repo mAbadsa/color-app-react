@@ -13,6 +13,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Button from "@material-ui/core/Button";
 import { ChromePicker } from "react-color";
+import DraggableColorBox from "./DraggableColorBox";
 
 const drawerWidth = 400;
 
@@ -57,6 +58,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
+    height: "calc(100vh - 64px)",
     padding: theme.spacing(3),
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
@@ -70,11 +72,6 @@ const styles = theme => ({
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0
-  },
-  colorBox: {
-    display: "inline-block",
-    width: "100px",
-    height: "100px"
   }
 });
 
@@ -83,9 +80,9 @@ class NewPaletteForm extends Component {
     super(props);
     this.state = {
       open: false,
-      currentColor: 'teal',
-      colors: ['teal', "#45F555"]
-    }
+      currentColor: "teal",
+      colors: ["teal", "#45F555"]
+    };
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
     this.addNewColors = this.addNewColors.bind(this);
   }
@@ -104,7 +101,6 @@ class NewPaletteForm extends Component {
 
   addNewColors() {
     this.setState({ colors: [...this.state.colors, this.state.currentColor] });
-
   }
 
   render() {
@@ -166,9 +162,14 @@ class NewPaletteForm extends Component {
             color={this.state.currentColor}
             onChangeComplete={this.updateCurrentColor}
           />
-          <Button variant="contained" color="primary" style={{backgroundColor: this.state.currentColor}} onClick={this.addNewColors}>
-              Add Color
-            </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ backgroundColor: this.state.currentColor }}
+            onClick={this.addNewColors}
+          >
+            Add Color
+          </Button>
         </Drawer>
         <main
           className={classNames(classes.content, {
@@ -176,13 +177,9 @@ class NewPaletteForm extends Component {
           })}
         >
           <div className={classes.drawerHeader} />
-          <ul>
-            {this.state.colors.map(item => {
-              return (
-                <span className={classes.colorBox} style={{backgroundColor: item}}></span>
-                )
+            {this.state.colors.map(color => {
+              return <DraggableColorBox color={color}></DraggableColorBox>;
             })}
-          </ul>
         </main>
       </div>
     );

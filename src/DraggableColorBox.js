@@ -5,7 +5,7 @@ const styles = {
   root: {
     // display: "flex",
     margin: "0 auto",
-    marginBottom: "-4px",
+    // marginBottom: "-4px",
     width: "20%",
     height: "25%",
     position: "relative",
@@ -18,7 +18,7 @@ function DraggableColorBox(props) {
   const { classes } = props;
   return (
     <div className={classes.root} style={{ backgroundColor: props.color }}>
-      {props.color}
+      {props.colorName}
     </div>
   );
 }

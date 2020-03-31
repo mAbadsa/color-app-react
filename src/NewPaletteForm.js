@@ -82,8 +82,9 @@ class NewPaletteForm extends Component {
     this.state = {
       open: false,
       currentColor: "teal",
-      newName: "",
-      colors: [{color: "blue", name: "blue"}]
+      newColorName: "",
+      colors: [{ color: "blue", name: "blue" }],
+      newPaletteName: ""
     };
     this.updateCurrentColor = this.updateCurrentColor.bind(this);
     this.addNewColors = this.addNewColors.bind(this);
@@ -92,15 +93,18 @@ class NewPaletteForm extends Component {
   }
 
   componentDidMount() {
-    ValidatorForm.addValidationRule('isColorNameUnique', value => {
-      return this.state.colors.every(({ name }) =>
-        name.toLowerCase() !== value.toLowerCase()
-      )
+    ValidatorForm.addValidationRule("isColorNameUnique", value => {
+      return this.state.colors.every(
+        ({ name }) => name.toLowerCase() !== value.toLowerCase()
+      );
     });
-    ValidatorForm.addValidationRule('isColorUnique', value => {
-      return this.state.colors.every(({ color }) =>
-        color !== this.state.currentColor
-      )
+    ValidatorForm.addValidationRule("isColorUnique", value => {
+      return this.state.colors.every(
+        ({ color }) => color !== this.state.currentColor
+      );
+    });
+    ValidatorForm.addValidationRule('isPaletteNameUnique', value => {
+      return this.props.palettes.every(({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase())
     })
   }
 
@@ -119,23 +123,28 @@ class NewPaletteForm extends Component {
   addNewColors(evt) {
     const newColor = {
       color: this.state.currentColor,
-      name: this.state.newName
+      name: this.state.newColorName
     };
-    this.setState({ colors: [...this.state.colors, newColor], newName: "" });
+    this.setState({
+      colors: [...this.state.colors, newColor],
+      newColorName: ""
+    });
   }
 
   handleChange(evt) {
-    this.setState({ newName: evt.target.value });
+    this.setState({
+      [evt.target.name]: evt.target.value
+    });
   }
-  handleSubmit(){
-    const newName = "New Test Palette";
+  handleSubmit() {
+    const newName = this.state.newPaletteName;
     const newPalette = {
       paletteName: newName,
-      id: newName.toLowerCase().replace(/\s/g, '-'),
+      id: newName.toLowerCase().replace(/\s/g, "-"),
       colors: this.state.colors
-    }
+    };
     this.props.savePalette(newPalette);
-    this.props.history.push('/');
+    this.props.history.push("/");
   }
 
   render() {
@@ -164,11 +173,26 @@ class NewPaletteForm extends Component {
             <Typography variant="h6" color="inherit" noWrap>
               Persistent drawer
             </Typography>
-            <Button
-              variant="contained"
-              onClick={this.handleSubmit}
-              color="primary"
-            >Save Palette</Button>
+            <ValidatorForm onSubmit={this.handleSubmit}>
+              <TextValidator
+                label="Palette Name"
+                value={this.state.newPaletteName}
+                name="newPaletteName"
+                onChange={this.handleChange}
+                validators={['required', 'isPaletteNameUnique']}
+                errorMessages={[
+                  "This field is required",
+                  "Palette name must be unique"
+                ]}
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+              >
+                Save Palette
+              </Button>
+            </ValidatorForm>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -206,9 +230,14 @@ class NewPaletteForm extends Component {
           <ValidatorForm onSubmit={this.addNewColors}>
             <TextValidator
               onChange={this.handleChange}
-              value={this.state.newName}
+              value={this.state.newColorName}
+              name="newColorName"
               validators={["required", "isColorNameUnique", "isColorUnique"]}
-              errorMessages={["This field is required", "Color name must be unique", "Color is already used!"]}
+              errorMessages={[
+                "This field is required",
+                "Color name must be unique",
+                "Color is already used!"
+              ]}
             />
             <Button
               type="submit"

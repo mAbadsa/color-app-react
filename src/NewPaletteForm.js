@@ -103,9 +103,11 @@ class NewPaletteForm extends Component {
         ({ color }) => color !== this.state.currentColor
       );
     });
-    ValidatorForm.addValidationRule('isPaletteNameUnique', value => {
-      return this.props.palettes.every(({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase())
-    })
+    ValidatorForm.addValidationRule("isPaletteNameUnique", value => {
+      return this.props.palettes.every(
+        ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
+      );
+    });
   }
 
   handleDrawerOpen = () => {
@@ -147,6 +149,13 @@ class NewPaletteForm extends Component {
     this.props.history.push("/");
   }
 
+  removeColor(colorName) {
+    const colors = this.state.colors.filter(color => color.name !==colorName);
+    this.setState({
+      colors: colors
+    })
+  }
+
   render() {
     const { classes, theme } = this.props;
     const { open } = this.state;
@@ -179,17 +188,13 @@ class NewPaletteForm extends Component {
                 value={this.state.newPaletteName}
                 name="newPaletteName"
                 onChange={this.handleChange}
-                validators={['required', 'isPaletteNameUnique']}
+                validators={["required", "isPaletteNameUnique"]}
                 errorMessages={[
                   "This field is required",
                   "Palette name must be unique"
                 ]}
               />
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-              >
+              <Button variant="contained" color="primary" type="submit">
                 Save Palette
               </Button>
             </ValidatorForm>
@@ -258,8 +263,10 @@ class NewPaletteForm extends Component {
           {this.state.colors.map(color => {
             return (
               <DraggableColorBox
+                key={color.name}
                 color={color.color}
                 colorName={color.name}
+                handleClick={() => this.removeColor(color.name)}
               ></DraggableColorBox>
             );
           })}

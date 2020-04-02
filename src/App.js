@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       palettes: seedColors
-    }
+    };
     this.savePalette = this.savePalette.bind(this);
     this.findPalette = this.findPalette.bind(this);
   }
@@ -23,13 +23,23 @@ class App extends React.Component {
   }
   savePalette(newPalette) {
     console.log(newPalette);
-    this.setState({ palettes: [...this.state.palettes, newPalette]});
+    this.setState({ palettes: [...this.state.palettes, newPalette] });
   }
   render() {
     // console.log(generatePalette(seedColors[2]));
     return (
       <Switch>
-        <Route exact path="/palette/new" render={(routeProps) => <NewPaletteForm {...routeProps} palettes={this.state.palettes} savePalette={this.savePalette}/>} />
+        <Route
+          exact
+          path="/palette/new"
+          render={routeProps => (
+            <NewPaletteForm
+              {...routeProps}
+              palettes={this.state.palettes}
+              savePalette={this.savePalette}
+            />
+          )}
+        />
         <Route
           exact
           path="/"

@@ -8,6 +8,7 @@ import DraggableColorBox from "./DraggableColorBox";
           {colors.map((color, index) => {
           return (
             <DraggableColorBox
+              key={`item-${index}`}
               index={index}
               Draggablkey={color.name}
               color={color.color}

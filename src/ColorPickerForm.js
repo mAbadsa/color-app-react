@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { ChromePicker } from "react-color";
+
+const styles = {
+    
+}
 
 class ColorPickerForm extends Component {
   constructor(props) {
@@ -87,4 +92,4 @@ class ColorPickerForm extends Component {
   }
 }
 
-export default ColorPickerForm;
+export default withStyles(styles)(ColorPickerForm);

@@ -15,28 +15,28 @@ import { arrayMove } from "react-sortable-hoc";
 
 const drawerWidth = 350;
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    display: "flex"
+    display: "flex",
   },
   hide: {
-    display: "none"
+    display: "none",
   },
   drawer: {
     width: drawerWidth,
-    flexShrink: 0
+    flexShrink: 0,
   },
   drawerPaper: {
     width: drawerWidth,
     alignItems: "center",
-    display: "flex"
+    display: "flex",
   },
   drawerHeader: {
     display: "flex",
     alignItems: "center",
     padding: "0 8px",
     ...theme.mixins.toolbar,
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
   },
   content: {
     flexGrow: 1,
@@ -44,16 +44,16 @@ const styles = theme => ({
     padding: theme.spacing(3),
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth
+    marginLeft: -drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
+      duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 0
+    marginLeft: 0,
   },
   container: {
     display: "flex",
@@ -61,7 +61,7 @@ const styles = theme => ({
     width: "90%",
     height: "100%",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   buttons: {
     // display: "flex",
@@ -69,19 +69,19 @@ const styles = theme => ({
     // justifyContent: "space-between"
   },
   button: {
-    width: "50%"
-  }
+    width: "50%",
+  },
 });
 
 class NewPaletteForm extends Component {
   static defaultProps = {
-    maxColors: 20
+    maxColors: 20,
   };
   constructor(props) {
     super(props);
     this.state = {
       open: true,
-      colors: this.props.palettes[0].colors
+      colors: this.props.palettes[0].colors,
     };
     this.addNewColors = this.addNewColors.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -101,38 +101,39 @@ class NewPaletteForm extends Component {
   addNewColors(newColor) {
     this.setState({
       colors: [...this.state.colors, newColor],
-      newColorName: ""
+      newColorName: "",
     });
   }
   clearColors() {
     this.setState({ colors: [] });
   }
   addRandomColor() {
-    const allColors = this.props.palettes.map(palette => palette.colors).flat();
+    const allColors = this.props.palettes
+      .map((palette) => palette.colors)
+      .flat();
     let randomNumber = Math.floor(Math.random() * allColors.length);
     const randomColor = allColors[randomNumber];
     this.setState({ colors: [...this.state.colors, randomColor] });
   }
-  handleSubmit(newPaletteName) {
-    const newPalette = {
-      paletteName: newPaletteName,
-      id: newPaletteName.toLowerCase().replace(/\s/g, "-"),
-      colors: this.state.colors
-    };
+  handleSubmit(newPalette) {
+    newPalette.id = newPalette.paletteName.toLowerCase().replace(/\s/g, "-");
+    newPalette.colors = this.state.colors;
     this.props.savePalette(newPalette);
     this.props.history.push("/");
   }
 
   removeColor(colorName) {
-    const colors = this.state.colors.filter(color => color.name !== colorName);
+    const colors = this.state.colors.filter(
+      (color) => color.name !== colorName
+    );
     this.setState({
-      colors: colors
+      colors: colors,
     });
   }
 
   onSortEnd = ({ oldIndex, newIndex }) => {
     this.setState(({ colors }) => ({
-      colors: arrayMove(colors, oldIndex, newIndex)
+      colors: arrayMove(colors, oldIndex, newIndex),
     }));
   };
 
@@ -155,7 +156,7 @@ class NewPaletteForm extends Component {
           anchor="left"
           open={open}
           classes={{
-            paper: classes.drawerPaper
+            paper: classes.drawerPaper,
           }}
         >
           <div className={classes.drawerHeader}>
@@ -169,7 +170,9 @@ class NewPaletteForm extends Component {
           </div>
           <Divider />
           <div className={classes.container}>
-            <Typography variant="h4" gutterBottom>Design Your Palette</Typography>
+            <Typography variant="h4" gutterBottom>
+              Design Your Palette
+            </Typography>
             <div className={classes.buttons}>
               <Button
                 variant="contained"
@@ -198,7 +201,7 @@ class NewPaletteForm extends Component {
         </Drawer>
         <main
           className={classNames(classes.content, {
-            [classes.contentShift]: open
+            [classes.contentShift]: open,
           })}
         >
           <div className={classes.drawerHeader} />

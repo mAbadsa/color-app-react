@@ -9,8 +9,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import AddToPhotosIcons from "@material-ui/icons/AddToPhotos";
 import Button from "@material-ui/core/Button";
-import styles from './styles/PaletteFormNavStyles';
+import styles from "./styles/PaletteFormNavStyles";
 
 class PaletteFormNav extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class PaletteFormNav extends React.Component {
     this.hideForm = this.hideForm.bind(this);
   }
   handleShowForm() {
-    this.setState(prevState => ({ showForm: !prevState.showForm }));
+    this.setState((prevState) => ({ showForm: !prevState.showForm }));
   }
   hideForm() {
     this.setState({ showForm: false });
@@ -45,9 +46,11 @@ class PaletteFormNav extends React.Component {
               color="inherit"
               aria-label="Open drawer"
               onClick={handleDrawerOpen}
-              className={classNames(classes.menuButton, open && classes.hide)}
+              className={classNames(classes.menuButton, {
+                [classes.hide]: open,
+              })}
             >
-              <MenuIcon />
+              <AddToPhotosIcons />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
               Create A Palette
@@ -55,7 +58,11 @@ class PaletteFormNav extends React.Component {
           </Toolbar>
           <div className={classes.navBtns}>
             <Link to="/">
-              <Button variant="contained" color="secondary" className={classes.button}>
+              <Button
+                variant="contained"
+                color="secondary"
+                className={classes.button}
+              >
                 Go Back
               </Button>
             </Link>

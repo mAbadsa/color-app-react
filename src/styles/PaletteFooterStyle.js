@@ -1,3 +1,5 @@
+import sizes from "./sizes";
+
 export default {
   PaletteFooter: {
     display: "flex",
@@ -21,6 +23,10 @@ export default {
       paddingLeft: "0.5rem",
       fontSize: "1.5rem",
       color: "yellow"
+    },
+    [sizes.down('xs')]: {
+      justifyContent: "center",
+      fontSize: "1.8rem",
     }
   }
 };

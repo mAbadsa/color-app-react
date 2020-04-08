@@ -1,9 +1,11 @@
+import sizes from "./sizes";
+
 export default {
   Navbar: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
-    height: "10vh"
+    height: "10vh",
   },
   logo: {
     display: "flex",
@@ -28,6 +30,14 @@ export default {
     "& a": {
       textDecoration: "none",
       color: "#ffffff"
+    },
+    [sizes.down('xs')]: {
+      display: 'none'
+    },
+    [sizes.down('md')]: {
+      fontSize: '22px',
+      width: '30%',
+      boxSizing: "border-box"
     }
   },
   sliderContainer: {
@@ -73,6 +83,9 @@ export default {
       border: "none",
       boxShadow:
         "inset 0px 3px 6px 2px rgb(165, 164, 164), inset 0 1px 5px 3px rgb(105, 100, 101)"
+    },
+    [sizes.down('md')]: {
+
     }
   },
   selectContainer: {
@@ -105,6 +118,9 @@ export default {
     },
     "& .MuiSelect-icon": {
       color: "white !important"
+    },
+    [sizes.down('xs')]: {
+      width: "50%",
     }
   }
 };

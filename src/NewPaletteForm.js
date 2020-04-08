@@ -21,7 +21,7 @@ class NewPaletteForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: true,
+      open: false,
       colors: this.props.palettes[0].colors,
     };
     this.addNewColors = this.addNewColors.bind(this);

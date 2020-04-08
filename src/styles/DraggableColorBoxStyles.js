@@ -1,3 +1,5 @@
+import sizes from "./sizes";
+
 const styles = {
     root: {
       margin: "-3px auto",
@@ -11,6 +13,18 @@ const styles = {
         color: "white",
         transform: "scale(1.3)"
         // transition: "all 0.3s ease-in-out"
+      },
+      [sizes.down('lg')]: {
+        width: "25%",
+        height: "20%"
+      },
+      [sizes.down('md')]: {
+        width: "50%",
+        height: "15%"
+      },
+      [sizes.down('sm')]: {
+        width: "100%",
+        height: "10%"
       }
     },
     boxContent: {

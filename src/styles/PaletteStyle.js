@@ -3,7 +3,7 @@ import sizes from './sizes';
 export default {
   Palette: {
     height: "100vh",
-    [sizes.down('xm')]: {
+    [sizes.down('xs')]: {
       height: "200vh",
     }
   },
@@ -27,7 +27,7 @@ export default {
       width: "50%",
       height: "20%",
     },
-    [sizes.down('xm')]: {
+    [sizes.down('xs')]: {
       width: "100%",
       height: "10%",
     }

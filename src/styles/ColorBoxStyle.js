@@ -15,15 +15,15 @@ export default {
     },
     [sizes.down("lg")]: {
       width: "25%",
-      height: (props) => (props.colorShades ? "50%" : "20%"),
+      height: (props) => (props.colorShades ? "33.3333%" : "20%"),
     },
     [sizes.down("md")]: {
       width: "50%",
-      height: (props) => (props.colorShades ? "50%" : "15%"),
+      height: (props) => (props.colorShades ? "20%" : "10%"),
     },
     [sizes.down("xm")]: {
       width: "100%",
-      height: (props) => (props.colorShades ? "10%" : "10%"),
+      height: (props) => (props.colorShades ? "10%" : "5%"),
     }
   },
   colorText: {

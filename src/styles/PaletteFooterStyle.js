@@ -1,7 +1,7 @@
 export default {
   PaletteFooter: {
     display: "flex",
-    height: "7vh",
+    height: "10vh",
     paddingRight: "1rem",
     alignItems: "center",
     justifyContent: "flex-end",

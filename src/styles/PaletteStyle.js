@@ -1,6 +1,11 @@
+import sizes from './sizes';
+
 export default {
   Palette: {
-    height: "100vh"
+    height: "100vh",
+    [sizes.down('xm')]: {
+      height: "200vh",
+    }
   },
   PaletteColor: {
     height: "90%"
@@ -13,7 +18,19 @@ export default {
     display: "inline-block",
     backgroundColor: "#000",
     cursor: "pointer",
-    opacity: 1
+    opacity: 1,
+    [sizes.down('lg')]: {
+      width: "75%",
+      height: "33.3333%",
+    },
+    [sizes.down('md')]: {
+      width: "50%",
+      height: "20%",
+    },
+    [sizes.down('xm')]: {
+      width: "100%",
+      height: "10%",
+    }
   },
   backButton: {
     position: "absolute",
@@ -33,6 +50,7 @@ export default {
     color: "white",
     cursor: "pointer",
     textDecoration: "none",
-    transition: "all 0.3s"
+    transition: "all 0.3s",
+   
   }
 };

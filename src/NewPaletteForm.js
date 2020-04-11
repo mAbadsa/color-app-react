@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
-import PaletteFormNav from "./PaletteFormNav";
-import ColorPickerForm from "./ColorPickerForm";
 import Drawer from "@material-ui/core/Drawer";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
@@ -10,8 +8,10 @@ import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Button from "@material-ui/core/Button";
-import DraggableColorList from "./DraggableColorList";
 import { arrayMove } from "react-sortable-hoc";
+import PaletteFormNav from "./PaletteFormNav";
+import ColorPickerForm from "./ColorPickerForm";
+import DraggableColorList from "./DraggableColorList";
 import styles from './styles/NewPaletteFormStyles';
 
 class NewPaletteForm extends Component {
@@ -147,7 +147,7 @@ class NewPaletteForm extends Component {
         >
           <div className={classes.drawerHeader} />
           <DraggableColorList
-            colors={this.state.colors}
+            colors={colors}
             removeColor={this.removeColor}
             axis="xy"
             onSortEnd={this.onSortEnd}

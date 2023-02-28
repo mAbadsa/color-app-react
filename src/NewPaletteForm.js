@@ -61,6 +61,7 @@ class NewPaletteForm extends Component {
       randomColor = allColors[randomNumber];
       // eslint-disable-next-line no-loop-func
       isDuplicateColor = this.state.colors.some(
+        // eslint-disable-next-line no-loop-func
         (color) => color.name === randomColor.name
       );
     }

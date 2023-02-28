@@ -12,8 +12,8 @@ import { arrayMove } from "react-sortable-hoc";
 import PaletteFormNav from "./PaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
 import DraggableColorList from "./DraggableColorList";
-import styles from './styles/NewPaletteFormStyles';
-import seedColors from './seedColors';
+import styles from "./styles/NewPaletteFormStyles";
+import seedColors from "./seedColors";
 
 class NewPaletteForm extends Component {
   static defaultProps = {
@@ -56,10 +56,13 @@ class NewPaletteForm extends Component {
     let randomNumber;
     let randomColor;
     let isDuplicateColor = true;
-    while(isDuplicateColor) {
+    while (isDuplicateColor) {
       randomNumber = Math.floor(Math.random() * allColors.length);
       randomColor = allColors[randomNumber];
-      isDuplicateColor = this.state.colors.some(color => color.name === randomColor.name);
+      // eslint-disable-next-line no-loop-func
+      isDuplicateColor = this.state.colors.some(
+        (color) => color.name === randomColor.name
+      );
     }
     this.setState({ colors: [...this.state.colors, randomColor] });
   }
@@ -167,3 +170,4 @@ class NewPaletteForm extends Component {
 }
 
 export default withStyles(styles, { withTheme: true })(NewPaletteForm);
+

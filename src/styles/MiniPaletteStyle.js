@@ -5,11 +5,11 @@ export default {
     borderRadius: "5px",
     padding: "0.5rem",
     position: "relative",
-    overflow: "hidden",
+    // overflow: "hidden",
     cursor: "pointer",
     "&:hover svg": {
-      opacity: 1
-    }
+      opacity: 1,
+    },
   },
   colors: {
     width: "100%",
@@ -52,6 +52,7 @@ export default {
     zIndex: 10,
     padding: "5px",
     opacity: 0,
-    transition: "all 0.3s ease-in-out"
+    transition: "all 0.3s ease-in-out",
   },
 };
+

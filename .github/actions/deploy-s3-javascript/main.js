@@ -13,7 +13,7 @@ function run() {
     `aws s3 sync ${buildDistFolder} ${s3Uri} --region ${bucketRegion} --delete`
   );
 
-  const websiteUrl = `http://${bucketName}.s3-website-${bucketRegion}.amazonaws.com`;
+  const websiteUrl = `http://${bucketName}.s3-website.${bucketRegion}.amazonaws.com`;
   core.setOutput("website-url", websiteUrl);
 }
 

@@ -1,5 +1,16 @@
-name: 'Delpoy to s3'
-description: "Deploy to s3"
+name: 'Delpoy to AWS S3'
+description: "Deploy a static website via AWS S3 Bucket"
+inputs:
+  bucket:
+    description: 'The S3 bucket name.'
+    required: true
+  bucket-region:
+    description: 'The region AWS S3 bucket'
+    required: false
+    default: eu-central-1
+  dist-folder:
+    description: 'The folder containing the build files.'
+    required: true
 runs:
   using: 'node16'
   main: 'main.js'

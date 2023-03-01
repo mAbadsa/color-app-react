@@ -2,7 +2,6 @@
 
 # dependencies
 /node_modules
-.github/actions/deploy-s3-javascript/node_modules
 /.pnp
 .pnp.js
 

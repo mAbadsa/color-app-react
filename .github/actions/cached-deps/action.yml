@@ -1,5 +1,10 @@
 name: 'Get & Cache Dependencies'
 description: 'Get dependencies (via npm) and cache them.'
+inputs:
+  caching:
+    description: 'Whether to cache dependencies or not.'
+    required: false
+    default: 'true'
 runs:
   using: 'composite'
   steps:
@@ -14,10 +19,12 @@ runs:
     #   run: npm ci
     #   shell: bash
     - name: Get yarn cache directory path
+      if: inputs.caching == 'true'
       id: yarn-cache-dir-path
       run: echo "::set-output name=dir::$(yarn cache dir)"
       shell: bash
     - name: Cache yarn cache
+      if: inputs.caching == 'true'
       uses: actions/cache@v3
       id: cache-yarn-cache
       with:
@@ -36,5 +43,6 @@ runs:
     - run: yarn
       if: |
         steps.cache-yarn-cache.outputs.cache-hit != 'true' ||
-        steps.cache-node-modules.outputs.cache-hit != 'true'
+        steps.cache-node-modules.outputs.cache-hit != 'true' ||
+        inputs.caching != 'true'
       shell: bash

@@ -5,9 +5,6 @@ on:
       - "main"
       - "*"
   pull_request: {}
-defaults:
-  run:
-    shell: bash
 jobs:
   # lint:
   #   runs-on: ubuntu-latest
@@ -78,11 +75,24 @@ jobs:
         with:
           name: dist-files
           path: ./build
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-central-1
+      # - name: Configure AWS Credentials
+        # uses: aws-actions/configure-aws-credentials@v1
+        # with:
+        #   aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        #   aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        #   aws-region: eu-central-1
+      # - name: Deploy to S3 bucket
+        # run: aws s3 sync ./build/ s3://colot-palete-app --delete
       - name: Deploy to S3 bucket
-        run: aws s3 sync ./build/ s3://colot-palete-app --delete
+        id: deploy
+        uses: ./.github/actions/deploy-s3-docker
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        with: 
+          dist-folder: ./build
+          bucket: colot-palete-app
+          # bucket-region: eu-central-1
+      - name: Output deploy information
+        run: |
+          echo "Live URL: ${{ steps.deploy.outputs.website-url }}"

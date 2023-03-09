@@ -87,7 +87,7 @@ jobs:
       # - name: Deploy to S3 bucket
         # run: aws s3 sync ./build/ s3://colot-palete-app --delete
       - name: Get AWS permissions
-        uses: aws-actions/configure-aws-credentials
+        uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: arn:aws:iam::580668997262:role/github_action
           aws-region: us-east-1
